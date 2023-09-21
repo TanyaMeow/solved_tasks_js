@@ -1,14 +1,10 @@
 'use strict';
 
 function toObject(array) {
-    let result = {};
-
-    array.reduce((accumulator, obj) => {
+    return array.reduce((accumulator, obj) => {
         accumulator[obj['name']] = obj['value'];
         return accumulator;
-    }, result)
-
-    return result;
+    }, {})
 }
 
 console.log(toObject([
