@@ -4,33 +4,39 @@ class MySet {
     constructor(array) {
         if (!Array.isArray(array)) { throw 'Переданное значение не поддерживается!' }
 
-        this.array = array;
-        this.size = this.array.length;
+        this._array = array;
+
+        this.size = array.length;
     }
 
     add(value) {
-        this.array.push(value);
-        this._setSize();
+        if (!this._array.includes(value)) {
+            this._array.push(value);
+            this._setSize();
+        }
     }
 
     has(value) {
-        return this.array.includes(value);
+        return this._array.includes(value);
     }
 
     delete(value) {
-        for (let i = 0; i < this.array.length; i++) {
-            if (value === this.array[i]) {
-                this.array.splice(i, 1);
+        for (let i = 0; i < this._array.length; i++) {
+            if (value === this._array[i]) {
+                this._array.splice(i, 1);
             }
         }
     }
 
     clear() {
-        this.array = [];
+        this._array = [];
         this._setSize();
     }
 
     _setSize() {
-        this.size = this.array.length;
+        this.size = this._array.length;
     }
 }
+
+let le = new MySet([1, 2, 3, 4, 5]);
+console.log(le);
