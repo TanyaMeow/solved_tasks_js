@@ -67,8 +67,6 @@ function nodeFind(tree, node) {
     nodes.push(tree.node);
 
     (function addNode(tree) {
-        if (tree === {}) {}
-
         for (let child of tree.children) {
             tree = child;
             nodes.push(tree.node);
@@ -80,4 +78,4 @@ function nodeFind(tree, node) {
     return nodes.indexOf(node);
 }
 
-console.log(nodeFind(tree, 25))
+console.log(nodeFind(tree, 6))
