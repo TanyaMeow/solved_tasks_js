@@ -21,8 +21,6 @@ let result = arr.myMap((item, index) => {
     }
 });
 
-// console.log(result);
-
 // свой метод filter
 
 Array.prototype.myFilter = function (callback) {
@@ -40,5 +38,3 @@ Array.prototype.myFilter = function (callback) {
 let resul = arr.myFilter((item, index) => {
     return item > 2;
 });
-
-// console.log(resul)

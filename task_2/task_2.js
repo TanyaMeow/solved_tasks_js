@@ -13,12 +13,12 @@ function changeValue(keys, newValue, object) {
 
 changeValue(
     ['user', 'work', 'post'],
-    'jobless',
+    'programmer',
     {
         user: {
             name: 'Tanya',
             work: {
-                post: 'programmer'
+                post: 'jobless'
             }
         }
     }

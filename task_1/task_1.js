@@ -1,18 +1,18 @@
 'use strict';
 
 function shallowEquals(object1, object2) {
-    let keyArray1 = Object.keys(object1);
-    let keyArray2 = Object.keys(object2);
+    let keysArray1 = Object.keys(object1);
+    let keysArray2 = Object.keys(object2);
 
     if (object1 === object2) {
         return false;
     }
 
-    if (keyArray1.length !== keyArray2.length) {
+    if (keysArray1.length !== keysArray2.length) {
         return false;
     }
 
-    for (let key of keyArray1) {
+    for (let key of keysArray1) {
         if (!(key in object2)) {
             return false;
         }
