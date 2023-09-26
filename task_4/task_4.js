@@ -18,4 +18,12 @@ const fillUser = pipe (
     (user) => ({ ...user, city: "Boston" }),
 );
 
+const calculateAnyNumber = pipe (
+  (number) => number + 2,
+  (number) => number * 2,
+  (number) => (number / 2) - 2
+);
+
 console.log(fillUser());
+// FIXME https://i.imgur.com/G82Q3eC.png
+console.log(calculateAnyNumber());

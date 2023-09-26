@@ -5,6 +5,8 @@ function changeValue(keys, newValue, object) {
     if (keys.length === 1) {
          return object[keys[0]] = newValue;
     }
+    
+        // FIXME мутации и переопределения аргументов не допустимы
         object = object[keys[0]];
         keys = keys.slice(1);
 

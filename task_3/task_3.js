@@ -8,6 +8,7 @@ Array.prototype.myMap = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
+        // FIXME у callback-функции 3 аргумента
         newArray.push(callback(this[i], i));
     }
 
@@ -27,6 +28,7 @@ Array.prototype.myFilter = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
+        // FIXME у callback-функции 3 аргумента
         if (callback(this[i], i)) {
             newArray.push(this[i]);
         }

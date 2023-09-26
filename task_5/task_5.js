@@ -66,6 +66,8 @@ function nodeFind(tree, node) {
     const nodes = [];
     nodes.push(tree.node);
 
+    // FIXME функция будет проходится по всему дереву, даже если искомый узел будет первым.
+    //  Подумай, как оптимизировать поиск узла
     (function addNode(tree) {
         for (let child of tree.children) {
             tree = child;
@@ -75,6 +77,7 @@ function nodeFind(tree, node) {
         }
     })(tree)
 
+    // FIXME функция должна возвращать ссылку на искомый узел
     return nodes.indexOf(node);
 }
 

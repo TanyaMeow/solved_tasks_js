@@ -1,3 +1,4 @@
+// DONE
 'use strict';
 
 function toObject(array) {
