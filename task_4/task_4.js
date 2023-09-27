@@ -1,9 +1,7 @@
 'use strict';
 
 function pipe(...value) {
-    return () => {
-        let result = {};
-
+    return (result) => {
         for (let i = value.length - 1; i >= 0; i--) {
             result = value[i](result);
         }
@@ -24,6 +22,6 @@ const calculateAnyNumber = pipe (
   (number) => (number / 2) - 2
 );
 
-console.log(fillUser());
-// FIXME https://i.imgur.com/G82Q3eC.png
-console.log(calculateAnyNumber());
+console.log(fillUser({}));
+// FIXME https://i.imgur.com/G82Q3eC.png (DONE)
+console.log(calculateAnyNumber(9));

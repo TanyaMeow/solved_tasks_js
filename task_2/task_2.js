@@ -3,14 +3,12 @@
 function changeValue(keys, newValue, object) {
 
     if (keys.length === 1) {
-         return object[keys[0]] = newValue;
+        object[keys[0]] = newValue;
+        return;
     }
-    
-        // FIXME мутации и переопределения аргументов не допустимы
-        object = object[keys[0]];
-        keys = keys.slice(1);
 
-        changeValue(keys, newValue, object);
+    // FIXME мутации и переопределения аргументов не допустимы (DONE)
+    changeValue(keys.slice(1), newValue, object[keys[0]]);
 }
 
 changeValue(
@@ -24,4 +22,4 @@ changeValue(
             }
         }
     }
-    );
+);

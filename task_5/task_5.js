@@ -63,22 +63,29 @@ const tree = {
 };
 
 function nodeFind(tree, node) {
-    const nodes = [];
-    nodes.push(tree.node);
+    let foundNode;
 
-    // FIXME функция будет проходится по всему дереву, даже если искомый узел будет первым.
-    //  Подумай, как оптимизировать поиск узла
+    // FIXME функция будет проходится по всему дереву, даже если искомый узел будет первым. (DONE)
+    //  Подумай, как оптимизировать поиск узла(DONE)
+    if (tree.node === node) {
+        return tree;
+    }
+
     (function addNode(tree) {
+        if (foundNode) return;
+
         for (let child of tree.children) {
             tree = child;
-            nodes.push(tree.node);
+
+            if (tree.node === node) {
+                foundNode = tree;
+                return;
+            }
 
             addNode(tree);
         }
     })(tree)
 
-    // FIXME функция должна возвращать ссылку на искомый узел
-    return nodes.indexOf(node);
+    // FIXME функция должна возвращать ссылку на искомый узел (DONE)
+    return foundNode ? foundNode : -1;
 }
-
-console.log(nodeFind(tree, 6))

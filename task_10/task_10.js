@@ -12,39 +12,30 @@ function asyncTimeout(timeout) {
     });
 }
 
-function promiseStack(value, count = 0) {
-    const stack = [];
+async function promiseStack(value, count = 0) {
+    // FIXME если мы случайно передадим в середине массива undefined, то функция прервется не выполнив все промисы
+    // FIXME это не гарантирует того, что функция дождется выполнения всех промисов в stack.(DONE)
+    //  Для этого нужно использовать await Promise.all и передать в нее массив из первых n функций (DONE)
 
-    if (value.length === 0) {
-        // FIXME зачем тут возвращать единицу?)
-        return 1;
+    // FIXME remove (DONE)
+
+    let newValue = value.filter((func) => func !== undefined);
+
+    for (let i = 0; i < newValue.length; i+= count) {
+        let stack = newValue.slice(i, i + count);
+
+        await Promise.all(stack.map((func) => func()));
     }
-
-    for (let i = 0; i < count; i++) {
-        // FIXME если мы случайно передадим в середине массива undefined, то функция прервется не выполнив все промисы
-        if (value[i] === undefined) {
-            return;
-        }
-        // FIXME это не гарантирует того, что функция дождется выполнения всех промисов в stack.
-        //  Для этого нужно использовать await Promise.all и передать в нее массив из первых n функций
-        stack.push(value[i]());
-        // FIXME remove
-        console.log(stack);
-    }
-
-    let newValue = value.slice(count);
-
-    Promise.all(stack).then(() => {
-        promiseStack(newValue, count);
-    });
 }
 
 promiseStack([
+    undefined,
     () => asyncTimeout(4000).then(() => console.log(1)),
     () => asyncTimeout(4000).then(() => console.log(1)),
+    undefined,
     () => asyncTimeout(2000).then(() => console.log(2)),
     () => asyncTimeout(2000).then(() => console.log(2)),
     () => asyncTimeout(1000).then(() => console.log(3)),
     () => asyncTimeout(1000).then(() => console.log(3)),
     () => asyncTimeout(3000).then(() => console.log(4)),
-], 2);
+], 2).then();

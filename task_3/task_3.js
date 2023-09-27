@@ -8,17 +8,18 @@ Array.prototype.myMap = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
-        // FIXME у callback-функции 3 аргумента
-        newArray.push(callback(this[i], i));
+        // FIXME у callback-функции 3 аргумента (DONE)
+        newArray.push(callback(this[i], i, this));
     }
 
     return newArray;
 }
 
-let result = arr.myMap((item, index) => {
+let result = arr.myMap((item, index, arr) => {
     return {
         elem: item,
-        index: index
+        index: index,
+        array: arr
     }
 });
 
@@ -28,8 +29,8 @@ Array.prototype.myFilter = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
-        // FIXME у callback-функции 3 аргумента
-        if (callback(this[i], i)) {
+        // FIXME у callback-функции 3 аргумента (DONE)
+        if (callback(this[i], i, this)) {
             newArray.push(this[i]);
         }
     }
@@ -37,6 +38,6 @@ Array.prototype.myFilter = function (callback) {
     return newArray;
 }
 
-let resul = arr.myFilter((item, index) => {
+let resul = arr.myFilter((item, index, arr) => {
     return item > 2;
 });
