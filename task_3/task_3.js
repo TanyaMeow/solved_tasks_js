@@ -1,3 +1,4 @@
+// DONE
 'use strict';
 
 // свой метод map
