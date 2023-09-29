@@ -1,3 +1,5 @@
+// FIXME сделай так, что бы вторая таблица тоже поддерживала этот функционал.
+//  See task_2.html. Посыл замечания в том, что insertRow должен быть переиспользуемый
 const table = document.getElementById('sampleTable');
 const input = document.querySelector('input');
 const rows = document.getElementsByTagName('tr');

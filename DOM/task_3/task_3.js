@@ -1,3 +1,4 @@
+// DONE
 "use strict";
 
 const calculate = document.querySelector('[value="Calculate"]');
