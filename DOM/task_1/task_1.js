@@ -6,10 +6,10 @@ const firstName = form.elements.fname;
 const lastName = form.elements.lname;
 const userData = document.querySelector('.data');
 
-function getFormvalue(event) {
+function getFormValue(event) {
     event.preventDefault();
 
     userData.textContent = firstName.value + ` ${lastName.value}`;
 }
 
-form.onsubmit = getFormvalue;
+form.onsubmit = getFormValue;
